@@ -1,4 +1,5 @@
-﻿using AssetChange.Domain.Dtos.External;
+﻿using AssetChange.Domain.Dtos;
+using AssetChange.Domain.Dtos.External;
 using AssetChange.Domain.Entities;
 using AssetChange.Infra.Data.Repositories.Interfaces;
 using AssetChange.Service.Services.Interfaces;
@@ -23,6 +24,9 @@ namespace AssetChange.Service.Services
 
         public async Task<IEnumerable<Asset>> GetMoreAsync(Asset entity)
             => await _assetRepository.RetrieveAsync(entity);
+
+        public async Task<List<AssetChangeDto>> GetMoreAssetChangeAsync(string assetName)
+            => await _assetRepository.RetreaveAssetChangeAsync(assetName);
 
         public async Task RefreshAsync(Asset entity)
             => await _assetRepository.UpdateAsync(entity);

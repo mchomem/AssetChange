@@ -1,4 +1,5 @@
-﻿using AssetChange.Domain.Dtos.External;
+﻿using AssetChange.Domain.Dtos;
+using AssetChange.Domain.Dtos.External;
 using AssetChange.Domain.Entities;
 using AssetChange.Infra.Data.Contexts;
 using AssetChange.Infra.Data.Repositories.Interfaces;
@@ -85,7 +86,7 @@ namespace AssetChange.Infra.Data.Repositories
                     Type = CurrentTradingPeriodType.POST
                 });
 
-                await _context.SaveChangesAsync();                
+                await _context.SaveChangesAsync();
 
                 for (int i = 0; i < item.Timestamp.Count; i++)
                 {
@@ -129,6 +130,28 @@ namespace AssetChange.Infra.Data.Repositories
                     .ToListAsync();
             else
                 return await _context.Asset.ToListAsync();
+        }
+
+        public async Task<List<AssetChangeDto>> RetreaveAssetChangeAsync(string assetName)
+        {
+            // Get first importation from Asset.
+            Asset asset = await _context.Asset
+                .Where(x => x.Symbol == assetName)
+                .OrderByDescending(x => x.ImportedIn)
+                .FirstOrDefaultAsync();
+
+            return await _context.AssetTradingDate
+                .Where(x => x.AssetId == asset.Id)
+                .OrderBy(x => x.Id)
+                .Select(x => new AssetChangeDto()
+                {
+                    Id = x.Id,
+                    EventData = x.EventDate,
+                    OpeningValue = x.OpeningValue,
+                    PercentageD1 = CommonUtil.CalculatePriceChange(x.OpeningValue, _context.AssetTradingDate.OrderBy(i => i.Id).Where(i => i.Id < x.Id && i.AssetId == asset.Id).Select(i => i.OpeningValue).LastOrDefault()),
+                    PercentageFirstDay = CommonUtil.CalculatePriceChange(x.OpeningValue, _context.AssetTradingDate.Where(y => y.AssetId == asset.Id).OrderBy(y => y.Id).Select(i => i.OpeningValue).FirstOrDefault())
+                })
+                .ToListAsync();
         }
 
         public async Task UpdateAsync(Asset entity)

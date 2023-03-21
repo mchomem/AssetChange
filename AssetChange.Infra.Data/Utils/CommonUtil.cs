@@ -8,5 +8,8 @@
             dateTime = dateTime.AddSeconds(timestamp);
             return dateTime;
         }
+
+        public static string CalculatePriceChange(decimal? newValue, decimal? oldValue)
+            => $" {((newValue - oldValue) / oldValue) * 100}%";
     }
 }

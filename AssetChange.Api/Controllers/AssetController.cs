@@ -1,4 +1,5 @@
-﻿using AssetChange.Domain.Entities;
+﻿using AssetChange.Domain.Dtos;
+using AssetChange.Domain.Entities;
 using AssetChange.Service.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,20 @@ namespace AssetChange.Api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e);
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpGet("asset-change")]
+        public async Task<ActionResult<List<AssetChangeDto>>> GetAssetChange(string assetName = "PETR4.SA")
+        {
+            try
+            {
+                return Ok(await _assetService.GetMoreAssetChangeAsync(assetName));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
             }
         }
 
@@ -35,7 +49,7 @@ namespace AssetChange.Api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e);
+                return StatusCode(500, e.Message);
             }
         }
 
@@ -50,7 +64,7 @@ namespace AssetChange.Api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e);
+                return StatusCode(500, e.Message);
             }
         }
 
@@ -65,7 +79,7 @@ namespace AssetChange.Api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e);
+                return StatusCode(500, e.Message);
             }
         }
 
@@ -80,7 +94,7 @@ namespace AssetChange.Api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e);
+                return StatusCode(500, e.Message);
             }
         }
     }
