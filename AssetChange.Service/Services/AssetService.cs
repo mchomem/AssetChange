@@ -1,4 +1,5 @@
-﻿using AssetChange.Domain.Entities;
+﻿using AssetChange.Domain.Dtos.External;
+using AssetChange.Domain.Entities;
 using AssetChange.Infra.Data.Repositories.Interfaces;
 using AssetChange.Service.Services.Interfaces;
 
@@ -13,6 +14,9 @@ namespace AssetChange.Service.Services
 
         public async Task AddAsync(Asset entity)
             => await _assetRepository.CreateAsync(entity);
+
+        public async Task AddAsync(YahooChartDto yahooChartDto)
+            => await _assetRepository.CreateAsync(yahooChartDto);
 
         public async Task<Asset> GetAsync(Asset entity)
             => await _assetRepository.DetailsAsync(entity);

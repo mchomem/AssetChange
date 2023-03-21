@@ -1,4 +1,4 @@
-﻿namespace AssetChange.Service.Utils
+﻿namespace AssetChange.Infra.Data.Utils
 {
     public static class CommonUtil
     {
