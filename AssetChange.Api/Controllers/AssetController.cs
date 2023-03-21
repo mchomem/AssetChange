@@ -15,6 +15,7 @@ namespace AssetChange.Api.Controllers
             => _assetService = assetService;
 
         [HttpGet]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<ActionResult<IEnumerable<Asset>>> Get()
         {
             try
@@ -27,7 +28,12 @@ namespace AssetChange.Api.Controllers
             }
         }
 
-        [HttpGet("asset-change")]
+        /// <summary>
+        /// Get an analytical report on the price variation of an asset.
+        /// </summary>
+        /// <param name="assetName">The name of asset</param>
+        /// <returns></returns>
+        [HttpGet("price-change")]
         public async Task<ActionResult<List<AssetChangeDto>>> GetAssetChange(string assetName = "PETR4.SA")
         {
             try
@@ -41,6 +47,7 @@ namespace AssetChange.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<ActionResult<Asset>> Get(int id)
         {
             try
@@ -54,6 +61,7 @@ namespace AssetChange.Api.Controllers
         }
 
         [HttpPost]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<ActionResult> Post(Asset asset)
         {
             try
@@ -69,6 +77,7 @@ namespace AssetChange.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<ActionResult> Put(Asset asset)
         {
             try
@@ -84,6 +93,7 @@ namespace AssetChange.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<ActionResult> Delete(int id)
         {
             try
