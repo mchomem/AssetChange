@@ -27,10 +27,7 @@ namespace AssetChange.Service.Services.External
             if (yahooChart == null)
                 throw new Exception("No information found on Yahoo Finance API.");
 
-            await TransformAndSave(yahooChart);
-        }
-
-        private async Task TransformAndSave(YahooChartDto? yahooChart)
-            => await _assetService.AddAsync(yahooChart);
+            await _assetService.AddAsync(yahooChart);
+        }        
     }
 }
