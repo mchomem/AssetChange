@@ -3,6 +3,9 @@
     public static class BusinessUtil
     {
         public static string CalculateAndFormatPriceChange(decimal? newValue, decimal? oldValue)
-            => $" {((newValue - oldValue) / oldValue * 100)?.ToString("0.00")}%";
+        {
+            var result = ((newValue - oldValue) / oldValue * 100);
+            return result != null ? $"{ result ?.ToString("0.00") }%" : "-";
+        }
     }
 }
