@@ -64,7 +64,7 @@ namespace AssetChange.Domain.Dtos.External
     }
 
     [Serializable]
-    public class CurrentTradingPeriodPre
+    public class CurrentTradingPeriodPreDto
     {
         [JsonPropertyName("timezone")]
         public string? Timezone { get; set; }
@@ -80,7 +80,7 @@ namespace AssetChange.Domain.Dtos.External
     }
 
     [Serializable]
-    public class CurrentTradingPeriodRegular
+    public class CurrentTradingPeriodRegularDto
     {
         [JsonPropertyName("timezone")]
         public string? Timezone { get; set; }
@@ -96,7 +96,7 @@ namespace AssetChange.Domain.Dtos.External
     }
 
     [Serializable]
-    public class CurrentTradingPeriodPost
+    public class CurrentTradingPeriodPostDto
     {
         [JsonPropertyName("timezone")]
         public string? Timezone { get; set; }
@@ -115,11 +115,11 @@ namespace AssetChange.Domain.Dtos.External
     public class CurrentTradingPeriodDto
     {
         [JsonPropertyName("pre")]
-        public CurrentTradingPeriodPre? CurrentTradingPeriodPre { get; set; }
+        public CurrentTradingPeriodPreDto? CurrentTradingPeriodPre { get; set; }
         [JsonPropertyName("regular")]
-        public CurrentTradingPeriodRegular? CurrentTradingPeriodRegular { get; set; }
+        public CurrentTradingPeriodRegularDto? CurrentTradingPeriodRegular { get; set; }
         [JsonPropertyName("post")]
-        public CurrentTradingPeriodPost? CurrentTradingPeriodPost { get; set; }
+        public CurrentTradingPeriodPostDto? CurrentTradingPeriodPost { get; set; }
     }
 
     [Serializable]

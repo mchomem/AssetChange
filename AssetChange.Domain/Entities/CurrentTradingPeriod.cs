@@ -2,8 +2,8 @@
 {
     public class CurrentTradingPeriod
     {
-        public int Id { get; set; }
-        public int AssetId { get; set; }
+        public int? Id { get; set; }
+        public int? AssetId { get; set; }
         public Asset? Asset { get; set; }
         public string? Timezone { get; set; }
         public DateTime Start { get; set; }

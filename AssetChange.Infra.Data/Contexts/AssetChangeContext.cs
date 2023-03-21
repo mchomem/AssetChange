@@ -10,6 +10,7 @@ namespace AssetChange.Infra.Data.Contexts
     {
         public DbSet<Asset> Asset { get; set; }
         public DbSet<AssetTradingDate> AssetTradingDate { get; set; }
+        public DbSet<CurrentTradingPeriod> CurrentTradingPeriod { get; set; }
 
         public AssetChangeContext() : base() {}
 

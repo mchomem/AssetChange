@@ -48,6 +48,45 @@ namespace AssetChange.Infra.Data.Repositories
 
                 await CreateAsync(asset);
 
+                await _context.CurrentTradingPeriod.AddAsync(new CurrentTradingPeriod()
+                {
+                    AssetId = asset.Id,
+                    Asset = asset,
+                    Timezone = item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodPre.Timezone,
+                    Start = CommonUtil.ConvertFromTimestamp(item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodPre.Start),
+                    End = CommonUtil.ConvertFromTimestamp(item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodPre.End),
+                    Gmtoffset = item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodPre.Gmtoffset,
+                    Type = CurrentTradingPeriodType.PRE
+                });
+
+                await _context.SaveChangesAsync();
+
+                await _context.CurrentTradingPeriod.AddAsync(new CurrentTradingPeriod()
+                {
+                    AssetId = asset.Id,
+                    Asset = asset,
+                    Timezone = item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodRegular.Timezone,
+                    Start = CommonUtil.ConvertFromTimestamp(item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodRegular.Start),
+                    End = CommonUtil.ConvertFromTimestamp(item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodRegular.End),
+                    Gmtoffset = item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodRegular.Gmtoffset,
+                    Type = CurrentTradingPeriodType.REGULAR
+                });
+
+                await _context.SaveChangesAsync();
+
+                await _context.CurrentTradingPeriod.AddAsync(new CurrentTradingPeriod()
+                {
+                    AssetId = asset.Id,
+                    Asset = asset,
+                    Timezone = item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodPost.Timezone,
+                    Start = CommonUtil.ConvertFromTimestamp(item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodPost.Start),
+                    End = CommonUtil.ConvertFromTimestamp(item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodPost.End),
+                    Gmtoffset = item.AssetDto.CurrentTradingPeriod.CurrentTradingPeriodPost.Gmtoffset,
+                    Type = CurrentTradingPeriodType.POST
+                });
+
+                await _context.SaveChangesAsync();                
+
                 for (int i = 0; i < item.Timestamp.Count; i++)
                 {
                     DateTime? eventDate = CommonUtil.ConvertFromTimestamp(item.Timestamp[i]);
@@ -85,7 +124,7 @@ namespace AssetChange.Infra.Data.Repositories
                 return await _context.Asset
                     .Where(x => (
                         (!entity.Id.HasValue || x.Id.Value == entity.Id.Value)
-                        && (string.IsNullOrEmpty(entity.Symbol) || x.Symbol.Contains(entity.Symbol)) 
+                        && (string.IsNullOrEmpty(entity.Symbol) || x.Symbol.Contains(entity.Symbol))
                     ))
                     .ToListAsync();
             else
