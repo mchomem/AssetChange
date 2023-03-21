@@ -151,6 +151,8 @@ namespace AssetChange.Infra.Data.Repositories
                     PercentageD1 = BusinessUtil.CalculateAndFormatPriceChange(x.OpeningValue, _context.AssetTradingDate.OrderBy(i => i.Id).Where(i => i.Id < x.Id && i.AssetId == asset.Id).Select(i => i.OpeningValue).LastOrDefault()),
                     PercentageFirstDay = BusinessUtil.CalculateAndFormatPriceChange(x.OpeningValue, _context.AssetTradingDate.Where(y => y.AssetId == asset.Id).OrderBy(y => y.Id).Select(i => i.OpeningValue).FirstOrDefault())
                 })
+                .OrderByDescending(x => x.Id)
+                .Take(30)
                 .ToListAsync();
         }
 
