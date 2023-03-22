@@ -12,6 +12,7 @@ Note: This REST API can be consumed by applications with free access to the Asse
 ### Steps for good use:
 
 A. Execute asset data import by selecting an asset symbol (name);
+
 B. Afterwards, run the price change query, again selecting the value of the imported asset symbol.
 
 Below is a table containing the routes that can be used for the api operations mentioned in the steps above. Note that there is an additional route that just queries the asset, basically mirroring the data structure.
