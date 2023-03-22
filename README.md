@@ -11,7 +11,7 @@ Note: This REST API can be consumed by applications with free access to the Asse
 
 ### Steps for good use:
 
-A. Execute asset data import by selecting an asset symbol (name);
+A. Execute asset data import by selecting an asset symbol (name);<br>
 
 B. Afterwards, run the price change query, again selecting the value of the imported asset symbol.
 
