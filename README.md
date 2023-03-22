@@ -9,14 +9,21 @@ After proper deployment on an application server with IIS (Internet Information 
 
 Note: This REST API can be consumed by applications with free access to the AssetChange url.
 
+### Steps for good use:
+
+A. Execute asset data import by selecting an asset symbol (name);
+B. Afterwards, run the price change query, again selecting the value of the imported asset symbol.
+
+Below is a table containing the routes that can be used for the api operations mentioned in the steps above. Note that there is an additional route that just queries the asset, basically mirroring the data structure.
+
 ### Routes and features
 
-|								URL										   |					Function     					                                  |
-|--------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| https://(url_server):7162/api/Asset/price-change?assetName=(asset_name)  | Get an analytical price change report for the last 30 trading sessions of an asset   |
-| https://(url_server):7162/api/YahooFinance/asset?assetName=(asset_name)  | Obtains the entire data structure of an asset by querying the Yahoo Financial system |
-| https://(url_server):7162/api/YahooFinance/import?assetName=(asset_name) | Imports the data needed to generate the analytical report                            |
-|                                                                          |                                                                                      |
+|  Nº |                             URL                                          |					               Function                                             |
+|-----|--------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+|  1  | https://(url_server):7162/api/YahooFinance/import?assetName=(asset_name) | Imports the data needed to generate the analytical report                            |
+|  2  | https://(url_server):7162/api/Asset/price-change?assetName=(asset_name)  | Get an analytical price change report for the last 30 trading sessions of an asset   |
+|  3  | https://(url_server):7162/api/YahooFinance/asset?assetName=(asset_name)  | Obtains the entire data structure of an asset by querying the Yahoo Financial system |
+|     |                                                                          |                                                                                      |
 
 ## Development Team
 
