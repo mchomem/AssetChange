@@ -28,7 +28,7 @@ Below is a table containing the routes that can be used for the api operations m
 
 ## Development Team
 
--   Misael C. Homem (Developer, Analyst, Architect)
+-   [Misael C. Homem](https://www.linkedin.com/in/misael-da-costa-homem-8b07a158/) (Developer, Analyst, Architect)
 
 ## Features
 
