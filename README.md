@@ -7,7 +7,7 @@ This project was inspired by [Guidti Challenge](https://github.com/guideti/varia
 
 After proper deployment on an application server with IIS (Internet Information Services), ask your administrator for the url made available for the application.
 
-The database environment can be built from the project itself, for this it is enough to open the project with Visual Studio 2022, locate the `appsettings.json` file, change the connection strings and later, open the Package Manager Console terminal, select the project "4-Infra\AssetChange.Infra.Data" and run the Entity Framework Core command: `update-database`, so that the table structure is built.
+The database environment can be built from the project itself, for this it is enough to open the project with Visual Studio 2022, locate the `appsettings.json` file, change the connection strings and later, open the Package Manager Console terminal, select the project `4-Infra\AssetChange.Infra.Data` and run the Entity Framework Core command: `update-database`, so that the table structure is built.
 
 Note: This REST API can be consumed by applications with free access to the AssetChange url.
 
