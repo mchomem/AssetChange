@@ -1,4 +1,4 @@
-# AssetChange
+# Asset Price Change
 
 AssetChange is an information system that allows you to obtain data from the Yahoo Financial system, extract and store this data in a database and generate a report on asset price changes.
 This project was inspired by [Guidti Challenge](https://github.com/guideti/variacao-ativo).
